@@ -28,11 +28,13 @@ from skimage import filters
 import yaml
 import os
 
+#Change calibration here
+
 xOff_l = -2.5
 xOff_r = -1.5
 
 FILE_NAME = "11-12-19-scan5"
-LOAD_ROI = True
+LOAD_ROI = False
 LOAD_PCD = False
 
 with open("config.yaml", 'r') as ymlfile:
@@ -140,7 +142,7 @@ for i in range(len(trajectory)):
     npArr = trajectory[i].unNormalize(pcd.z_max, pcd.z_min)
     trajectory[i] = Trajectory(npArr)
 
-    """
+    
     x_trajectory = trajectory[i].smooth_outliers(npArr[:][:,0])
 
     smooth_x = trajectory[i].create_polynomial(npArr[:][:,1],x_trajectory, npArr[:][:,2], pcd.y_resolution, y_range, y_min, POLY_DEGREE = 7)
@@ -157,7 +159,7 @@ for i in range(len(trajectory)):
             k += 1
     traj_npArr = np.array(traj_npArr)
     trajectory[i] = Trajectory(traj_npArr)
-    """
+
 
 
     trajectory[i].getPointCloudLines()
