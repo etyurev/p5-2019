@@ -40,6 +40,8 @@ class Quality:
         smooth_z = self.z_smoothvalue
         for i in range(len(array)):
             self.smooth_array[i][2] = smooth_z[i]
+        self.smooth_array1 = np.array(self.smooth_array)
+
         #finding the z minimum of the smoothed peened weld-toe "self.z_smoothmin"
         self.z_smoothvalue = []
         for points in self.smooth_array:
@@ -47,7 +49,7 @@ class Quality:
         self.z_smoothvalue = np.array(self.z_smoothvalue)
         self.z_smoothmin = np.min(self.z_smoothvalue)
 
-        self.smooth_array = np.array(self.smooth_array)
+
         #finding the z minimum of the peened weld-toe "self.z_min"
 
         z_value = []
@@ -226,6 +228,11 @@ class Quality:
         b, a = self.butter_lowpass(cutoff, self.FS, order=order)
         y = filtfilt(b, a, self.array[:,2])
         self.z_smoothvalue = y
+
+    def smooth2(self, cutoff, fs, array, order=5):
+        b, a = self.butter_lowpass(cutoff, fs, order=order)
+        y = filtfilt(b, a, array)
+        return y
 
     def find_traject(self, xOffset, file = ""):
 

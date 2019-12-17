@@ -280,7 +280,24 @@ print("std ---> a: ", round(np.std(depth[0]),3)," b: ", round(np.std(depth[1]),3
 print("max ---> a: ", round(np.amax(depth[0]),3)," b: ", round(np.amax(depth[1]),3), " c: ", round(np.amax(depth[2]),3), " d: ", round(np.amax(depth[3]),3))
 print("min ---> a: ", round(np.min(depth[0]),3)," b: ", round(np.min(depth[1]),3), " c: ", round(np.min(depth[2]),3), " d: ", round(np.min(depth[3]),3))
 print("99 range: ", round(np.percentile(depth[0], 0.5),3), ":",round(np.percentile(depth[0], 99.5),3)," b: ", round(np.percentile(depth[1], 0.5),3), ":",round(np.percentile(depth[1], 99.5),3), " c: ", round(np.percentile(depth[2], 0.5),3), ":",round(np.percentile(depth[2], 99.5),3), " d: ", round(np.percentile(depth[3], 0.5),3), ":",round(np.percentile(depth[3], 99.5),3))
+print("99 ", round(np.percentile(deviation[0],99),3))
+print("98 ", round(np.percentile(deviation[0],98),3))
+print("97 ", round(np.percentile(deviation[0],97),3))
+print("96 ", round(np.percentile(deviation[0],96),3))
+print("95 ", round(np.percentile(deviation[0],95),3))
+print("94 ", round(np.percentile(deviation[0],94),3))
+print("93 ", round(np.percentile(deviation[0],93),3))
+print("92 ", round(np.percentile(deviation[0],92),3))
+print("91 ", round(np.percentile(deviation[0],91),3))
+print("90 ", round(np.percentile(deviation[0],90),3))
+print("89 ", round(np.percentile(deviation[0],89),3))
 
+print("0 ", round(np.percentile(deviation[0],0),3))
+print("1 ", round(np.percentile(deviation[0],1),3))
+print("2 ", round(np.percentile(deviation[0],2),3))
+print("3 ", round(np.percentile(deviation[0],3),3))
+print("4 ", round(np.percentile(deviation[0],4),3))
+print("5 ", round(np.percentile(deviation[0],5),3))
 
 data0a = {"V = 3 mm/s, A = 80 deg": deviation[0]}
 data0b = {"V = 6 mm/s, A = 70 deg": deviation[1]}
