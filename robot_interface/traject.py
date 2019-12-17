@@ -1,12 +1,14 @@
 import sys
 import numpy as np
 import re
-sys.path.append("/Users/mathiaspoulsen/Desktop/PythonProjects/")
-from transformation import transformation
+sys.path.append("C:\\Users\\etyur\\Documents\\ROBOTICS_AAU\\5_SEMESTER\\P_5\\RoboDK_P5\\KUKA_KR60_3")
+from TranformClass.transformation import transformation
+from robolink.robolink import *
+from robodk.robodk import *
 
-
+RDK = Robolink()
 #example use
-path_folder = "/Users/mathiaspoulsen/Desktop/PythonProjects/"
+path_folder = "C:\\Users\\etyur\\Documents\\ROBOTICS_AAU\\5_SEMESTER\\P_5\\RoboDK_P5\\KUKA_KR60_3\\TranformClass\\"
 name_kuka_ipo = "WINDOWS-P92OSKB-Wall-E-501514_19gr563_KRCIpo.r64"
 name_kuka_io = "WINDOWS-P92OSKB-Wall-E-501514_19gr563_KRCIO.r64"
 
@@ -35,5 +37,11 @@ if __name__ == "__main__":
     f.close()
 
     #returns the curve for robodk as numpy
-    curve_roboDK=trans.calc_pose_pit_robodk(local_traject_poses,20)
+curve_roboDK = trans.calc_pose_pit_robodk(local_traject_poses,20)
+listCurve = curve_roboDK.tolist()
+
+object_curve = RDK.AddCurve(listCurve)
+object_curve.setName('Curve Trajectory for PIT')
+path_settings = RDK.AddMillingProject("AutoCurveFollow settings")
+prog, status = path_settings.setMillingParameters(part=object_curve)
 

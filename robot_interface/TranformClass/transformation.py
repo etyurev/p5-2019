@@ -13,8 +13,8 @@ class transformation:
     # Specifying paths for the different files.
     def __init__(self):
         interval = 12  # ms
-        self.PIT_Config = [226.16, 36.408, 40.458, 0, 90, 0]
-        self.scanner_Config = [1.330, -50.24, 155.889, 0, 0, 0]
+        self.PIT_Config = [-176.5, 335, 54, 180, 0, -90]
+        self.scanner_Config = [167.80, -52, 55, -180, -90, 180]
         self.PIT_Config_KUKA60 = [-176.5, 335, 54, 180, 0, -90]
         self.scanner_Config_KUKA60 = [167.80, -52, 55, -180, -90, 180]
         self.n_points_ipo = 14
@@ -23,7 +23,7 @@ class transformation:
         self.scanning_length = 50  # mm
         self.scanner_frequency = 10 / 0.3  # microseconds between  line
         self.data_frequency = 12  # ms logged data
-        self.scan_offset = 1.863  # mm scanning offset, since we start scanning before we are moving.
+        self.scan_offset = 0  # mm scanning offset, since we start scanning before we are moving.
         self.scan_end_offset = 30  # num of points to not include at the end of scan
 
     def reading_from_file(self, path_ipo, path_io):
@@ -89,7 +89,7 @@ class transformation:
         interpolate_functions5 = interp1d(linspace_rob_traj, self.trajectory[:, 5])
         # interpolated_function = interp1d(linspace_rob_traj, self.trajectory[:,0])
         interpolated_points = np.zeros((scan_trajectory_len, len(self.trajectory[0])))
-
+        print(scan_trajectory_len)
         for i in range(0, scan_trajectory_len):
             interpolated_points[i][0] = interpolate_functions0(i * self.scanner_frequency)
             interpolated_points[i][1] = interpolate_functions1(i * self.scanner_frequency)
@@ -104,7 +104,7 @@ class transformation:
         matrix = []
         for i in range(0, len(local_poses)):
             matrix1 = self.matrix(
-                [local_poses[i][0], local_poses[1][1] - self.scan_offset, local_poses[i][2], 0, 20, 0])
+                [local_poses[i][0], local_poses[0][1] - self.scan_offset, local_poses[i][2], 0, 20, 0])
             matrix2 = self.matrix(
                 [inter_points[i][0], inter_points[i][1], inter_points[i][2], inter_points[i][3] * 180 / pi,
                  inter_points[i][4] * 180 / pi, inter_points[i][5] * 180 / pi])
@@ -125,7 +125,7 @@ class transformation:
             curve_rob[i][3] = 0
             cosa, sina = self.ang(90 - angle)
             curve_rob[i][4] = cosa * 100
-            curve_rob[i][5] = - sina * 100
+            curve_rob[i][5] = -sina * 100
         return curve_rob
 
     def ang(self, angle):
