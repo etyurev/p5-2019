@@ -1,0 +1,5 @@
+*.pyc
+*test_albert.py
+*test_karl.py
+*localTrajectory1.txt
+*localTrajectory0.txt

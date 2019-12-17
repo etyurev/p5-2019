@@ -1,0 +1,15 @@
+Test number,Velocity,Angle,Offset,Side,Average Velocity,File Name
+5,3,70,1.2,l,,Test-5-Quality
+6,6,80,1.8,r,,Test-5-Quality
+7,3,70,1.2,l,,Test-6-Quality
+8,3,80,1.8,r,,Test-6-Quality
+11,3,70,1.2,l,,Test-8-Quality
+12,3,70,1.8,r,,Test-8-Quality
+13,3,80,-2.5,l,,11-12-19-qual2
+14,6,70,-1.5,r,,11-12-19-qual2
+15,6,70,-2.5,l,,11-12-19-qual3
+16,6,70,-1.5,r,,11-12-19-qual3
+17,6,80,-2.5,l,,11-12-19-qual4
+18,6,80,-1.5,r,,11-12-19-qual4
+19,3,80,-2.5,l,,11-12-19-qual5
+20,3,80,-1.5,r,,11-12-19-qual5
